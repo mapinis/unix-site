@@ -3,3 +3,12 @@ body {
     color: white;
     font-size: 14px;
 }
+
+a {
+    text-decoration: underline;
+    color: lightgrey;
+}
+
+a:hover {
+    color: white;
+}

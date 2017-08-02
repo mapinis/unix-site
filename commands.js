@@ -18,3 +18,7 @@ var ls = function(args){
     }
     return output;
 }
+
+var ping = function(){
+    return "<p><a href='http://www.google.com/'>Pong!</a></p>"
+}

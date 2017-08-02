@@ -16,12 +16,19 @@
             </p>
         </div>
         <script>
+            var files = [
+                "aboutme.txt",
+                "programming.txt",
+                "photography.txt"
+            ]
+
             document.getElementsByClassName("header")[0].innerHTML = header;
 
             var commands = {
                 hi: hi,
                 pathadd: pathadd,
-                ls: ls
+                ls: ls,
+                ping: ping
             };
 
             terminal = Terminal.init(document.getElementById("terminal"), commands);

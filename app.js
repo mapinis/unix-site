@@ -17,9 +17,3 @@ function addToPath(newPath){
     headerPath = newPath;
     header = makeHeader();
 }
-
-var files = [
-    "aboutme.txt",
-    "programming.txt",
-    "photography.txt"
-]
