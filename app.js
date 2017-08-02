@@ -1,20 +1,17 @@
-var hi = function(){
-    return "<p><b>Test</b> <i>Test</i></p>"
-};
+var terminal;
 
-var header = function(args){
-    console.log(args);
-    if(args.length < 2){
-        return "Error: header accepts one argument"
-    } else {
-        document.getElementById('header').innerHTML = args[1] + "$";
-        return ""
-    }
+var URL = "URL",
+    USER = "user";
+
+var path = "~";
+
+function makeHeader(){
+   return URL + ":" + path + " " + USER + "$";
 }
 
-var commands = {
-    hi: hi,
-    header: header
-};
+var header = makeHeader();
 
-Terminal.init(document.getElementById("terminal"), commands);
+function addToPath(newPart){
+    path += "/" + newPart;
+    header = makeHeader();
+}

@@ -4,15 +4,26 @@
         <title>mapinis</title>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" type="text/css" href="terminal.css">
+        <script src="app.js"></script>
         <script src="terminal.js"></script>
+        <script src="commands.js"></script>
     </head>
     <body>
         <div id="terminal">
             <p>
-                <span id="header">mapinis.github.io:~ user$ </span>
+                <span class="header"></span>
                 <span contenteditable="true" class="input"></span>
             </p>
         </div>
-        <script src="app.js"></script>
+        <script>
+            document.getElementsByClassName("header")[0].innerHTML = header;
+
+            var commands = {
+                hi: hi,
+                pathadd: pathadd
+            };
+
+            terminal = Terminal.init(document.getElementById("terminal"), commands);
+        </script>
     </body>
 </html> 

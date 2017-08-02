@@ -7,16 +7,15 @@ var Terminal = (function() {
         KEY_DOWN = 40,
         KEY_TAB  = 9;
 
-    // Auxiliary functions
-
     var resetPrompt = function(terminal, prompt) {
         var newPrompt = prompt.parentNode.cloneNode(true);
         prompt.setAttribute("contenteditable", false);
         if(self.prompt) {
             newPrompt.querySelector(".prompt").textContent = self.prompt;
         }
+        newPrompt.querySelector(".header").innerHTML = header;
         terminal.appendChild(newPrompt);
-        newPrompt.querySelector(".input").innerHTML = " ";
+        newPrompt.querySelector(".input").innerHTML = "";
         newPrompt.querySelector(".input").focus();
     };
 
@@ -103,6 +102,8 @@ var Terminal = (function() {
             var input = prompt.textContent.split(" ");
             if(input[0] && input[0] in self.commands) {
                 runCommand(elem, input[0], input);
+            } else if(!(input[0] in self.commands) && input[0]){
+                elem.innerHTML += "<p>Command not found. Run command <b>help</b> to view available commands.</p>";
             }
 
             resetPrompt(elem, prompt);
