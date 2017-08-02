@@ -3,10 +3,16 @@
     <head>
         <title>mapinis</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="terminal.css">
+        <script src="terminal.js"></script>
     </head>
-    <body id="content">
-        <input class="input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" name="in" />
+    <body>
+        <div id="terminal">
+            <p>
+                <span id="header">mapinis.github.io:~ user$ </span>
+                <span contenteditable="true" class="input"></span>
+            </p>
+        </div>
+        <script src="app.js"></script>
     </body>
 </html> 

@@ -1,34 +1,5 @@
-#content {
+body {
     background-color: black;
     color: white;
-    font-family: monospace;
     font-size: 14px;
-    cursor: none;
-}
-
-input {
-    size: auto;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: black;
-    font-family: monospace;
-    font-size: 14px;
-}
-
-@keyframes cursor {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        -webkit-animation-timing-function: steps(1, end);
-        -moz-animation-timing-function: steps(1, end);
-        -ms-animation-timing-function: steps(1, end);
-        -o-animation-timing-function: steps(1, end);
-        animation-timing-function: steps(1, end);
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
 }
