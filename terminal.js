@@ -14,8 +14,8 @@ var Terminal = (function() {
             newPrompt.querySelector(".prompt").textContent = self.prompt;
         }
         newPrompt.querySelector(".header").innerHTML = header;
-        terminal.appendChild(newPrompt);
         newPrompt.querySelector(".input").innerHTML = "";
+        terminal.appendChild(newPrompt);
         newPrompt.querySelector(".input").focus();
     };
 

@@ -3,15 +3,23 @@ var terminal;
 var URL = "URL",
     USER = "user";
 
-var path = "~";
+var headerPath = "~",
+    path = "/"
 
 function makeHeader(){
-   return URL + ":" + path + " " + USER + "$";
+   return URL + ":" + headerPath + " " + USER + "$";
 }
 
 var header = makeHeader();
 
-function addToPath(newPart){
-    path += "/" + newPart;
+function addToPath(newPath){
+    path += "/" + newPath;
+    headerPath = newPath;
     header = makeHeader();
 }
+
+var files = [
+    "aboutme.txt",
+    "programming.txt",
+    "photography.txt"
+]
