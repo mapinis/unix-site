@@ -8,7 +8,7 @@ function makeHeader(){
 }
 
 function addToPath(newPath){
-    path += "/" + newPath;
+    path.push(newPath);
     headerPath = newPath;
     header = makeHeader();
 }

@@ -10,7 +10,7 @@ html
         #terminal
             p
                 span.header
-                span(contenteditable="true").input
+                span(contenteditable="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false").input
         !=contents
         script.
             var headerPath = path[path.length - 1];
