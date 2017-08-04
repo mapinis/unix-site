@@ -1,0 +1,19 @@
+{
+  "name": "unix-site",
+  "version": "1.0.0",
+  "description": "A site that looks like unix",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapinis/unix-site.git"
+  },
+  "author": "Mark Apinis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapinis/unix-site/issues"
+  },
+  "homepage": "https://github.com/mapinis/unix-site#readme"
+}
