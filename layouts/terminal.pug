@@ -1,0 +1,28 @@
+html
+    head
+        title=title
+        link(rel="stylesheet" type="text/css" href="style.css")
+        link(rel="stylesheet" type="text/css" href="terminal.css")
+        script(src="app.js")
+        script(src="terminal.js")
+        script(src="commands.js")
+    body
+        #terminal
+            p
+                span.header
+                span(contenteditable="true").input
+        !=contents
+        script.
+            var headerPath = path[path.length - 1];
+            var header = makeHeader();
+
+            document.getElementsByClassName("header")[0].innerHTML = header;
+
+            var commands = {
+                hi: hi,
+                pathadd: pathadd,
+                ls: ls,
+                ping: ping
+            };
+
+            terminal = Terminal.init(document.getElementById("terminal"), commands);
