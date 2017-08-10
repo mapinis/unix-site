@@ -2,6 +2,8 @@ var Metalsmith = require('metalsmith');
 var pug = require('metalsmith-pug');
 var layouts = require('metalsmith-layouts');
 
+var files = require('./plugins/files');
+
 new Metalsmith(__dirname)
     .metadata({
         title: "mapinis",
@@ -12,6 +14,7 @@ new Metalsmith(__dirname)
     .source('./src')
     .destination('./build')
     //Plugins go here
+    .use(files())
     .clean(false)
     .use(pug({
         useMetadata: true,

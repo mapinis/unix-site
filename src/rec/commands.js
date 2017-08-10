@@ -13,8 +13,10 @@ var pathadd = function(args){
 
 var ls = function(args){
     var output = "";
-    for(var file of files){
-        output += "<p>" + file.name + "</p>";
+    for(var file in files){
+        if(files.hasOwnProperty(file)){
+            output += "<p>" + file + "</p>";
+        }
     }
     return output;
 }
