@@ -1,8 +1,12 @@
 ---
 layout: terminal.pug
-title: mapinis/
+title: mapinis 
 key: __index
 ---
+// Change title so that it is based on path
+- var files = []
+- var path = ["~"]
+
 script.
-    var files = ["aboutme.txt", "programming.txt", "photography.txt"],
-        path = ["/"];
+    var files = !{JSON.stringify(files)},
+        path = !{JSON.stringify(path)};

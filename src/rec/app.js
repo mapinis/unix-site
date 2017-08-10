@@ -16,7 +16,7 @@ function addToPath(newPath){
 function makePathString(){
     var out = "";
     for(var pathPart of path){
-        out += "/" + (pathPart == "/" ? "" : pathPart)
+        out += "/" + (pathPart == "~" ? "" : pathPart)
     }
     return out;
 }

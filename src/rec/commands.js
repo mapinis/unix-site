@@ -14,7 +14,7 @@ var pathadd = function(args){
 var ls = function(args){
     var output = "";
     for(var file of files){
-        output += "<p>" + file + "</p>";
+        output += "<p>" + file.name + "</p>";
     }
     return output;
 }
