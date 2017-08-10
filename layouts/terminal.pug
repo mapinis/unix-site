@@ -11,8 +11,9 @@ html
             p
                 span.header
                 span(contenteditable="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false").input
-        != contents
         script.
+            var files = !{JSON.stringify(files)},
+                path = !{JSON.stringify(path)};
             var headerPath = path[path.length - 1];
             var header = makeHeader();
 

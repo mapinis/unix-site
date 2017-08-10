@@ -11,6 +11,7 @@ new Metalsmith(__dirname)
     })
     .source('./src')
     .destination('./build')
+    //Plugins go here
     .clean(false)
     .use(pug({
         useMetadata: true,
