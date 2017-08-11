@@ -33,22 +33,45 @@ addCommand("ls", ls, "Lists contents of current directory", null, ['l']);
 
 // cd command. Takes arg of where to cd to. Redirects user to that location
 var cd = function(args){
-    if(args.length != 2){
+    if(args.length != 2){ //Make sure that there is an argument
         return "<p>Error: Command <b>cd</b> accepts one argument: the directory to enter</p>";
-    } else if(!(files.hasOwnProperty(args[1]))){
-        return "<p>Error: Directory not found</p>";
-    } else if(files.hasOwnProperty(args[1]) && files[args[1]].type != FILE_CONSTS.DIR){
-        return "<p>Error: Not a directory</p>";
-    } else if(files.hasOwnProperty(args[1])
-                && files[args[1]].type == FILE_CONSTS.DIR
-                && files[args[1]].perms == PERMS_CONSTS.NONE){
-        return "<p>Error: Permission denied</p>";
-    } else if(files.hasOwnProperty(args[1])
-                && files[args[1]].type == FILE_CONSTS.DIR
-                && files[args[1]].perms != PERMS_CONSTS.NONE){
-        return "<p>Directory found</p>"; // WILL CHANGE
+    
     } else {
-        return "<p>Error: Please check command and try again</p>";
+        if(args[1] == "."){ // Check for cd .
+            // Do Nothing
+            return ""
+        
+        } else if(args[1] == ".."){ // Check for cd ..
+            // Go back one in the path
+            path.pop();
+            window.location.replace(makePathString()); // Go to location less than current
+            return ""
+
+        } else if(args[1] == "~"){ // Check for cd ~
+            window.location.replace("/"); // Go home
+            return ""
+
+        } else if(!(files.hasOwnProperty(args[1]))){ // Check if arg is actually a file
+            return "<p>Error: Directory not found</p>";
+        // If passed, continue to next check
+        
+        } else if(files[args[1]].type != FILE_CONSTS.DIR){ // Check if arg is a directory
+            return "<p>Error: Not a directory</p>";
+        // If passed, continue to next check
+        
+        } else if(files[args[1]].perms == PERMS_CONSTS.NONE){ // Check if dir has correct perms
+            return "<p>Error: Permission denied</p>";
+        // If passed, continue to next check
+        
+        } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
+                    && files[args[1]].type == FILE_CONSTS.DIR
+                    && files[args[1]].perms != PERMS_CONSTS.NONE){
+            window.location.replace(makePathString() + args[1]); // Go to that location
+            return ""
+            
+        } else {
+            return "<p>Error: Please check command and try again</p>";
+        }
     }
 }
 addCommand("cd", cd, "Changes directory", ['The directory that is being switched to']);
