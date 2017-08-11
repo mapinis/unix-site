@@ -9,21 +9,7 @@ function addCommand(command, func, desc, args = null, flags = null){
     }
 }
 
-var hi = function(){
-    return "<p><b>Test</b> <i>Test</i></p>";
-};
-addCommand("hi", hi, "Simple test command");
-
-var pathadd = function(args){
-    if(args.length != 2){
-        return "Error: pathadd accepts one argument";
-    } else {
-        addToPath(args[1]);
-        return "";
-    }
-}
-addCommand("pathadd", pathadd, "Adds argument to path", ["Path to be added"]);
-
+// ls command. Takes in the -l flag as a possible arg. Displays contents of current directory
 var ls = function(args){
     var output = "";
     if(args.length == 1){
@@ -35,31 +21,49 @@ var ls = function(args){
     } else if(args[1] == "-l"){
         for(var file in files){
             if(files.hasOwnProperty(file)){
-                output += "<p>" + files[file].perms + " root root " + file + "</p>";
+                output += "<p>" + (files[file].type == FILE_CONSTS.DIR ? 'd': '-') + files[file].perms + " root root " + file + "</p>";
             }
         }
     } else {
-        output = "Incorrect use of ls (check flags)";
+        output = "<p>Error: Incorrect use of ls (check flags)</p>";
     }
     return output;
 }
 addCommand("ls", ls, "Lists contents of current directory", null, ['l']);
 
-var ping = function(){
-    return "<p><a href='http://www.google.com/'>Pong!</a></p>"
+// cd command. Takes arg of where to cd to. Redirects user to that location
+var cd = function(args){
+    if(args.length != 2){
+        return "<p>Error: Command <b>cd</b> accepts one argument: the directory to enter</p>";
+    } else if(!(files.hasOwnProperty(args[1]))){
+        return "<p>Error: Directory not found</p>";
+    } else if(files.hasOwnProperty(args[1]) && files[args[1]].type != FILE_CONSTS.DIR){
+        return "<p>Error: Not a directory</p>";
+    } else if(files.hasOwnProperty(args[1])
+                && files[args[1]].type == FILE_CONSTS.DIR
+                && files[args[1]].perms == PERMS_CONSTS.NONE){
+        return "<p>Error: Permission denied</p>";
+    } else if(files.hasOwnProperty(args[1])
+                && files[args[1]].type == FILE_CONSTS.DIR
+                && files[args[1]].perms != PERMS_CONSTS.NONE){
+        return "<p>Directory found</p>"; // WILL CHANGE
+    } else {
+        return "<p>Error: Please check command and try again</p>";
+    }
 }
-addCommand("ping", ping, "Test command for links");
+addCommand("cd", cd, "Changes directory", ['The directory that is being switched to']);
 
+// help command. Takes no args, and lists all commands (including itself)
 var help = function(){
     var output = "<br />";
     for(var command in commands){
         output += "<p><b><u>" + command + "</u></b>:</p>";
-        output += "<p> <i>Description:</i> " + commands[command].desc + "</p>";
+        output += "<p>&nbsp;<i>Description:</i> " + commands[command].desc + "</p>";
         if(commands[command].args){
-            output += "<p> <i>Arguments:</i> " + commands[command].args + "</p>";
+            output += "<p>&nbsp;<i>Arguments:</i> " + commands[command].args + "</p>";
         }
         if(commands[command].flags){
-            output += "<p> <i>Flags:</i> " + commands[command].flags + "</p>";
+            output += "<p>&nbsp;<i>Flags:</i> " + commands[command].flags + "</p>";
         }
         output += "<br />";
     }

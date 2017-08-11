@@ -16,7 +16,7 @@ var FILE_CONSTS = {
 module.exports = function(){
     return function(sources, metalsmith, done){
         Object.keys(sources).forEach(function(source){
-            if(sources[source].key == "__index" || sources[source].key == "__blog"){
+            if(sources[source].key == "__index"){
 
                 // Build a string for the path of the file
                 var path = "./src";
@@ -34,10 +34,10 @@ module.exports = function(){
 
                     // Add permissions info
                     if(fileName == "rec"){
-                        file.perms = 'd' + PERMS_CONSTS.NONE;
+                        file.perms = PERMS_CONSTS.NONE;
                     }
                     else {
-                        file.perms = (file.type == FILE_CONSTS.DIR ? 'd': '-') + PERMS_CONSTS.READ;
+                        file.perms = PERMS_CONSTS.READ;
                     }
 
                     // Switch fileName to how it would look in the final build
