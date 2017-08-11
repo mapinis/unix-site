@@ -16,7 +16,7 @@ var FILE_CONSTS = {
 module.exports = function(){
     return function(sources, metalsmith, done){
         Object.keys(sources).forEach(function(source){
-            if(sources[source].key == "__index"){
+            if(sources[source].key == "__index" || sources[source].key == "__blog"){
 
                 // Build a string for the path of the file
                 var path = "./src";
@@ -49,7 +49,7 @@ module.exports = function(){
                     sources[source].files[fileName] = file;
                 });
             }
-            done();
         });
+        done();
     };
 }
