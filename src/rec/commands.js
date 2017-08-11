@@ -26,10 +26,20 @@ addCommand("pathadd", pathadd, "Adds argument to path", ["Path to be added"]);
 
 var ls = function(args){
     var output = "";
-    for(var file in files){
-        if(files.hasOwnProperty(file)){
-            output += "<p>" + file + "</p>";
+    if(args.length == 1){
+        for(var file in files){
+            if(files.hasOwnProperty(file)){
+                output += "<p>" + file + "</p>";
+            }
         }
+    } else if(args[1] == "-l"){
+        for(var file in files){
+            if(files.hasOwnProperty(file)){
+                output += "<p>" + files[file].perms + " root root " + file + "</p>";
+            }
+        }
+    } else {
+        output = "Incorrect use of ls (check flags)";
     }
     return output;
 }
@@ -44,12 +54,12 @@ var help = function(){
     var output = "<br />";
     for(var command in commands){
         output += "<p><b><u>" + command + "</u></b>:</p>";
-        output += "<p>&nbsp;<i>Description:</i> " + commands[command].desc + "</p>";
+        output += "<p> <i>Description:</i> " + commands[command].desc + "</p>";
         if(commands[command].args){
-            output += "<p>&nbsp;<i>Arguments:</i> " + commands[command].args + "</p>";
+            output += "<p> <i>Arguments:</i> " + commands[command].args + "</p>";
         }
         if(commands[command].flags){
-            output += "<p>&nbsp;<i>Flags:</i> " + commands[command].flags + "</p>";
+            output += "<p> <i>Flags:</i> " + commands[command].flags + "</p>";
         }
         output += "<br />";
     }

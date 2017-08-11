@@ -20,7 +20,9 @@ var Terminal = (function() {
     };
 
     var runCommand = function(terminal, cmd, args) {
-        terminal.innerHTML += (self.commands[cmd].function(args));
+        if(self.commands[cmd].hasOwnProperty("function")){
+            terminal.innerHTML += (self.commands[cmd].function(args));
+        }
     };
 
     var updateHistory = function(cmd) {
