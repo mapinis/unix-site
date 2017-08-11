@@ -105,7 +105,7 @@ var Terminal = (function() {
             if(input[0] && input[0] in self.commands) {
                 runCommand(elem, input[0], input);
             } else if(!(input[0] in self.commands) && input[0]){
-                elem.innerHTML += "<p>Command not found. Run command <b>help</b> to view available commands.</p>";
+                elem.innerHTML += "<p>Error: Command <b>" + input[0] + "</b> not found. Run command <b>help</b> to view available commands.</p>";
             }
 
             resetPrompt(elem, prompt);
