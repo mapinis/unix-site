@@ -20,7 +20,7 @@ var Terminal = (function() {
     };
 
     var runCommand = function(terminal, cmd, args) {
-        terminal.innerHTML += (self.commands[cmd](args));
+        terminal.innerHTML += (self.commands[cmd].function(args));
     };
 
     var updateHistory = function(cmd) {
