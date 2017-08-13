@@ -13,7 +13,6 @@ var Terminal = (function() {
         if(self.prompt) {
             newPrompt.querySelector(".prompt").textContent = self.prompt;
         }
-        newPrompt.querySelector(".header").innerHTML = header;
         newPrompt.querySelector(".input").innerHTML = "";
         terminal.appendChild(newPrompt);
         newPrompt.querySelector(".input").focus();

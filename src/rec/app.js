@@ -13,20 +13,10 @@ var URL = "URL",
         WRITE: "rwxrwxrwx"
     }
 
-function makeHeader(){
-   return URL + ":" + headerPath + " " + USER + "$ ";
-}
-
-function addToPath(newPath){
-    path.push(newPath);
-    headerPath = newPath;
-    header = makeHeader();
-}
-
 function makePathString(){
     var out = "";
     for(var pathPart of path){
-        out += "/" + (pathPart == "~" ? "" : pathPart)
+        out += "/" + (pathPart == "/" ? "" : pathPart)
     }
     return out;
 }

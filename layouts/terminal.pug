@@ -14,8 +14,8 @@ html
         script.
             var files = !{JSON.stringify(files)},
                 path = !{JSON.stringify(path)};
-            var headerPath = path[path.length - 1];
-            var header = makeHeader();
+            var headerPath = (path[path.length - 1] == "/" ? "~" : path[path.length - 1]);
+            var header = URL + ":" + headerPath + " " + USER + "$ ";
 
             document.getElementsByClassName("header")[0].innerHTML = header;
 
