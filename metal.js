@@ -3,6 +3,7 @@ var pug = require('metalsmith-pug');
 var layouts = require('metalsmith-layouts');
 
 var files = require('./plugins/files');
+var build_path = require('./plugins/build_path');
 
 new Metalsmith(__dirname)
     .metadata({
@@ -13,7 +14,7 @@ new Metalsmith(__dirname)
     })
     .source('./src')
     .destination('./build')
-    //Plugins go here
+    .use(build_path())
     .use(files())
     .clean(false)
     .use(pug({

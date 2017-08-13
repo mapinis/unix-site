@@ -24,6 +24,9 @@ module.exports = function(){
                     path += "/" + (pathPart == "~" ? "" : pathPart)
                 }
 
+                // Instantiante files object
+                sources[source].files = {};
+
                 // Read the filesystem
                 fs.readdirSync(path).forEach(function(fileName){
                     // Create file object
