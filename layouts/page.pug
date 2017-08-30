@@ -1,0 +1,15 @@
+html
+    head
+        title= "mapinis" + path.join("")
+        link(rel="stylesheet" type="text/css" href="/rec/style.css")
+        link(rel="stylesheet" type="text/css" href="/rec/page.css")
+        script(src="/rec/page.js")
+    body
+        #content
+            // Put a warning here that this isn't vim
+            #title!=title
+            !=contents
+            br 
+            br
+            br
+        span(contenteditable="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false")#input

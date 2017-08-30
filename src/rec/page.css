@@ -1,0 +1,24 @@
+#content {
+    font-size: 14;
+    width: 55%;
+    margin: 0 auto;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+#title {
+    font-size: 20;
+    margin: 20px 0;
+}
+
+#input {
+    height:         1em;
+    min-width:      100%;
+    outline-color:  transparent;
+    border:         none;
+    display:        block;
+    position: fixed;
+    bottom: 0;
+    padding: 5px 0;
+    background-color: black;
+}
