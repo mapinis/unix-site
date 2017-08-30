@@ -1,3 +1,18 @@
+var terminal;
+
+var URL = "URL",
+    USER = "user",
+    FILE_CONSTS = {
+        DIR: 0,
+        HTML: 1,
+        OTHER: 2
+    },
+    PERMS_CONSTS = {
+        NONE: "rwx------",
+        READ: "rwxr-xr-x",
+        WRITE: "rwxrwxrwx"
+    }
+
 var Terminal = (function() {
     var history = (localStorage.getItem("history") ? localStorage.getItem("history").split(",") : []),
         historyIndex = history.length;
@@ -103,8 +118,8 @@ var Terminal = (function() {
             var input = prompt.textContent.split(" ");
             if(input[0] && input[0] in self.commands) {
                 runCommand(elem, input[0], input);
-            } else if(!(input[0] in self.commands) && input[0]){
-                elem.innerHTML += "<p>Error: Command <b>" + input[0] + "</b> not found. Run command <b>help</b> to view available commands.</p>";
+            } else if(input[0]){
+                elem.innerHTML += "<p>Error: Command not found. Run command <b>help</b> to view available commands.</p>";
             }
 
             resetPrompt(elem, prompt);

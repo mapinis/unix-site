@@ -44,7 +44,7 @@ var cd = function(args){
         } else if(args[1] == ".."){ // Check for cd ..
             // Go back one in the path
             path.pop();
-            window.location.replace(makePathString()); // Go to location less than current
+            window.location.replace(path.join("")); // Go to location less than current
             return ""
 
         } else if(args[1] == "~"){ // Check for cd ~
@@ -66,7 +66,7 @@ var cd = function(args){
         } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
                     && files[args[1]].type == FILE_CONSTS.DIR
                     && files[args[1]].perms != PERMS_CONSTS.NONE){
-            window.location.replace(makePathString() + args[1]); // Go to that location
+            window.location.replace(path.join("") + args[1]); // Go to that location
             return ""
             
         } else {
