@@ -1,14 +1,17 @@
 #content {
-    font-size: 14;
-    width: 55%;
+    font-size: 16;
+    width: 50%;
     margin: 0 auto;
     word-wrap: break-word;
     hyphens: auto;
+    line-height: 1.4;
+    text-indent: 30px;
 }
 
 #title {
-    font-size: 20;
+    font-size: 40px;
     margin: 20px 0;
+    text-indent: 0;
 }
 
 #input {

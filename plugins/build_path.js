@@ -20,10 +20,8 @@ module.exports = function(){
             }
 
             // Convert all .pugs to .html
-            for(var pathPart of path){
-                if(pathPart.includes('.pug')){
-                    pathPart.replace('.pug', '.html');
-                }
+            if(path[path.length - 1].includes('.pug')){
+                path[path.length - 1] = path[path.length - 1].replace('.pug', '.html');
             }
 
             // Push to .path
