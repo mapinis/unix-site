@@ -33,8 +33,12 @@ addCommand("ls", ls, "Lists contents of current directory", null, ['l']);
 
 // cd command. Takes arg of where to cd to. Redirects user to that location
 var cd = function(args){
-    if(args.length != 2){ //Make sure that there is an argument
-        return "<p>Error: Command <b>cd</b> accepts one argument: the directory to enter</p>";
+    if(args.length == 1){
+        window.location.replace("/");
+        return ""
+
+    } else if(args.length != 2){ //Make sure that there is an argument
+        return "<p>Error: Command <b>cd</b> accepts one argument (the directory to enter) or no argument</p>"
     
     } else {
         if(args[1] == "."){ // Check for cd .
@@ -74,7 +78,7 @@ var cd = function(args){
         }
     }
 }
-addCommand("cd", cd, "Changes directory", ['The directory that is being switched to']);
+addCommand("cd", cd, "Changes directory", ['(Optional) The directory that is being switched to']);
 
 // help command. Takes no args, and lists all commands (including itself)
 var help = function(){
