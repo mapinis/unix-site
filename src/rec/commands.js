@@ -35,7 +35,7 @@ addCommand("ls", ls, "Lists contents of current directory", null, ['l']);
 var cd = function(args){
     if(args.length == 1){
         window.location.replace("/");
-        return ""
+        return null;
 
     } else if(args.length != 2){ //Make sure that there is an argument
         return "<p>Error: Command <b>cd</b> accepts one argument (the directory to enter) or no argument</p>"
@@ -43,17 +43,17 @@ var cd = function(args){
     } else {
         if(args[1] == "."){ // Check for cd .
             // Do Nothing
-            return ""
+            return "";
         
         } else if(args[1] == ".."){ // Check for cd ..
             // Go back one in the path
             path.pop();
             window.location.replace(path.join("")); // Go to location less than current
-            return ""
+            return null;
 
         } else if(args[1] == "~"){ // Check for cd ~
             window.location.replace("/"); // Go home
-            return ""
+            return null;
 
         } else if(!(files.hasOwnProperty(args[1]))){ // Check if arg is actually a file
             return "<p>Error: Directory not found</p>";
@@ -71,7 +71,7 @@ var cd = function(args){
                     && files[args[1]].type == FILE_CONSTS.DIR
                     && files[args[1]].perms != PERMS_CONSTS.NONE){
             window.location.replace(path.join("") + args[1]); // Go to that location
-            return ""
+            return null;
             
         } else {
             return "<p>Error: Please check command and try again</p>";

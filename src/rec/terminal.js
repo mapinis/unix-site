@@ -1,6 +1,6 @@
 var terminal;
 
-var URL = "URL",
+const URL = "URL",
     USER = "user",
     FILE_CONSTS = {
         DIR: 0,
@@ -18,7 +18,7 @@ var Terminal = (function() {
         historyIndex = history.length;
         self = {};
 
-    var KEY_UP   = 38,
+    const KEY_UP   = 38,
         KEY_DOWN = 40,
         KEY_TAB  = 9;
 
@@ -34,9 +34,12 @@ var Terminal = (function() {
     };
 
     var runCommand = function(terminal, cmd, args) {
+        var out = null;
         if(self.commands[cmd].hasOwnProperty("function")){
-            terminal.innerHTML += (self.commands[cmd].function(args));
+            out = self.commands[cmd].function(args);
+            terminal.innerHTML += (out == null) ? "" : out;
         }
+        return out;
     };
 
     var updateHistory = function(cmd) {
@@ -111,18 +114,22 @@ var Terminal = (function() {
 
         elem.addEventListener("keypress", function(event) {
             var prompt = event.target;
+            var out = null;
             if(event.keyCode != 13) return false;
 
             updateHistory(prompt.textContent);
 
             var input = prompt.textContent.split(" ");
             if(input[0] && input[0] in self.commands) {
-                runCommand(elem, input[0], input);
+                out = runCommand(elem, input[0], input);
             } else if(input[0]){
                 elem.innerHTML += "<p>Error: Command not found. Run command <b>help</b> to view available commands.</p>";
+                out = "";
             }
 
-            resetPrompt(elem, prompt);
+            if(out != null){
+                resetPrompt(elem, prompt);
+            }
             event.preventDefault();
         });
 
