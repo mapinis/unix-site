@@ -98,3 +98,5 @@ var help = function(){
     return output;
 }
 addCommand("help", help, "Lists commands and their descriptions, arguments, and flags");
+
+// Commands to add: credits, basicinfo, rm (joke), view
