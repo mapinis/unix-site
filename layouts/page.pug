@@ -1,16 +1,16 @@
 html
     head
-        title= "mapinis" + path.join("")
+        title= "mapinis" + path.join("/")
         link(rel="stylesheet" type="text/css" href="/rec/style.css")
         link(rel="stylesheet" type="text/css" href="/rec/page.css")
         script(src="/rec/page.js")
     body
         #content
             // Put a warning here that this isn't vim
-            #title!=title
+            span#title!=title
+            |  - 
+            a.return(href=path.slice(0, -1).join("/")) go back
             !=contents
-            br 
-            br
-            br
+            a.return(href=path.slice(0, -1).join("/")) go back
         script.
             var path = !{JSON.stringify(path)};

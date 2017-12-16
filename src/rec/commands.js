@@ -1,4 +1,4 @@
-var commands = {};
+let commands = {};
 
 function addCommand(command, func, desc, args = null, flags = null){
     commands[command] = {
@@ -10,8 +10,8 @@ function addCommand(command, func, desc, args = null, flags = null){
 }
 
 // ls command. Takes in the -l flag as a possible arg. Displays contents of current directory
-var ls = function(args){
-    var output = "";
+const ls = function(args){
+    let output = "";
     if(args.length == 1){
         for(var file in files){
             if(files.hasOwnProperty(file)){
@@ -32,7 +32,7 @@ var ls = function(args){
 addCommand("ls", ls, "Lists contents of current directory", null, ['l']);
 
 // cd command. Takes arg of where to cd to. Redirects user to that location
-var cd = function(args){
+const cd = function(args){
     if(args.length == 1){
         window.location.replace("/");
         return null;
@@ -48,7 +48,7 @@ var cd = function(args){
         } else if(args[1] == ".."){ // Check for cd ..
             // Go back one in the path
             path.pop();
-            window.location.replace(path.join("")); // Go to location less than current
+            window.location.replace(path.join("/") === "" ? "/" : path.join("/")); // Go to location less than current
             return null;
 
         } else if(args[1] == "~"){ // Check for cd ~
@@ -70,7 +70,7 @@ var cd = function(args){
         } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
                     && files[args[1]].type == FILE_CONSTS.DIR
                     && files[args[1]].perms != PERMS_CONSTS.NONE){
-            window.location.replace(path.join("") + args[1]); // Go to that location
+            window.location.replace(path.join("/") + "/" + args[1]); // Go to that location
             return null;
             
         } else {
@@ -81,8 +81,8 @@ var cd = function(args){
 addCommand("cd", cd, "Changes directory", ['(Optional) The directory that is being switched to']);
 
 // help command. Takes no args, and lists all commands (including itself)
-var help = function(){
-    var output = "<br />";
+const help = function(){
+    let output = "<br />";
     for(var command in commands){
         output += "<p><b><u>" + command + "</u></b>:</p>";
         output += "<p>&nbsp;<i>Description:</i> " + commands[command].desc + "</p>";
@@ -99,4 +99,31 @@ var help = function(){
 }
 addCommand("help", help, "Lists commands and their descriptions, arguments, and flags");
 
-// Commands to add: credits, basicinfo, rm (joke), view
+// view command, takes on argument: the directory
+const view = function(args){
+    if(args.length != 2){
+        return "<p>Error: Command <b>view</b> requires one argument (the html file to view)</p>"
+    } else {
+        if(!files.hasOwnProperty(args[1])){
+            return "<p>Error: File not found"
+
+        } else if(files[args[1]].type != FILE_CONSTS.HTML){
+            return "<p>Error: Not an html file"
+        
+        } else if(files[args[1].perms == PERMS_CONSTS.NONE]){
+            return "<p>Error: Permission denied"
+
+        } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
+                    && files[args[1]].type == FILE_CONSTS.HTML
+                    && files[args[1]].perms != PERMS_CONSTS.NONE){
+            window.location.replace(path.join("/") + "/" + args[1]); // Go to that location
+            return null;
+
+        } else {
+            return "<p>Error: Please check command and try again</p>";
+        }
+    }
+}
+addCommand("view", view, "Views a specified HTML file", ["The file that is being viewed"]);
+
+// Commands to add: credits, basicinfo, rm (joke)

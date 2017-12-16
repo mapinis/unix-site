@@ -1,17 +1,8 @@
 #content {
-    font-size: 20px;
-    width: calc(-24.7(vw/vh) + ((24.7 * 9) / 16) + 80);
-    margin: 100px auto;
-    word-wrap: break-word;
-    hyphens: auto;
-    line-height: 1.7;
-    text-indent: 30px;
-    font-family: 'Times New Roman', Times, serif;
+    margin: 0 30%;
+    font-size: 16px;
 }
 
 #title {
-    font-size: 40px;
-    margin: 20px 0;
-    text-indent: 0;
-    font-family: monospace;
+    font-size: 18px;
 }
