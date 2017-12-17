@@ -5,7 +5,7 @@ module.exports = function() {
   return function(sources, metalsmith, done) {
     Object.keys(sources).forEach(function(source) {
       // Init new path string
-      var path = [""];
+      var path = [];
 
       // Loop over split source, add it to path
       for (var pathPart of source.split("/")) {
@@ -20,8 +20,10 @@ module.exports = function() {
       }
 
       // Convert all .pugs to .html
-      if (path[path.length - 1].includes(".pug")) {
-        path[path.length - 1] = path[path.length - 1].replace(".pug", ".html");
+      if(path.length != 0){
+        if (path[path.length - 1].includes(".pug")) {
+          path[path.length - 1] = path[path.length - 1].replace(".pug", ".html");
+        }
       }
 
       // Push to .path

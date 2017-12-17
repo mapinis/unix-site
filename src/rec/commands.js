@@ -103,7 +103,7 @@ const cd = function(args){
         } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
                     && files[args[1]].type == FILE_CONSTS.DIR
                     && files[args[1]].perms != PERMS_CONSTS.NONE){
-            window.location.replace(path.join("/") + "/" + args[1]); // Go to that location
+            window.location.replace("/" + path.join("/") + "/" + args[1]); // Go to that location
             return null;
             
         } else {
@@ -130,7 +130,7 @@ const view = function(args){
         } else if(files.hasOwnProperty(args[1]) // Do a final check of all the above
                     && files[args[1]].type == FILE_CONSTS.HTML
                     && files[args[1]].perms != PERMS_CONSTS.NONE){
-            window.location.replace(path.join("/") + "/" + args[1]); // View that file
+            window.location.replace("/" + path.join("/") + "/" + args[1]); // View that file
             return null;
 
         } else {

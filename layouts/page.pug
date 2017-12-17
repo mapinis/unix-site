@@ -9,8 +9,8 @@ html
             // Put a warning here that this isn't vim
             span#title!=title
             |  - 
-            a.return(href=path.slice(0, -1).join("/")) go back
+            a.return(href='/' + path.slice(0, -1).join("/")) go back
             !=contents
-            a.return(href=path.slice(0, -1).join("/")) go back
+            a.return(href='/' + path.slice(0, -1).join("/")) go back
         script.
             var path = !{JSON.stringify(path)};
