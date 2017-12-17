@@ -39,7 +39,7 @@ var Terminal = (function() {
     var out = null;
     if (self.commands[cmd].hasOwnProperty("function")) {
       out = self.commands[cmd].function(args);
-      terminal.innerHTML += out == null ? "" : out;
+      terminal.innerHTML += out == null ? "" : "<br />" + out;
     }
     return out;
   };
